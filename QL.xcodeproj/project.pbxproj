@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C50C173235FA632002F2194 /* GraphQLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50C172235FA632002F2194 /* GraphQLTableViewController.swift */; };
+		5C50C175235FA670002F2194 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50C174235FA670002F2194 /* ContactTableViewCell.swift */; };
 		5CF19BDD233D77BE0098CE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF19BDC233D77BE0098CE8D /* AppDelegate.swift */; };
 		5CF19BDF233D77BE0098CE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF19BDE233D77BE0098CE8D /* SceneDelegate.swift */; };
-		5CF19BE1233D77BE0098CE8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF19BE0233D77BE0098CE8D /* ViewController.swift */; };
 		5CF19BE4233D77BE0098CE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF19BE2233D77BE0098CE8D /* Main.storyboard */; };
 		5CF19BE6233D77C90098CE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CF19BE5233D77C90098CE8D /* Assets.xcassets */; };
 		5CF19BE9233D77C90098CE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF19BE7233D77C90098CE8D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C50C172235FA632002F2194 /* GraphQLTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTableViewController.swift; sourceTree = "<group>"; };
+		5C50C174235FA670002F2194 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		5CF19BD9233D77BD0098CE8D /* QL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF19BDC233D77BE0098CE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CF19BDE233D77BE0098CE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5CF19BE0233D77BE0098CE8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5CF19BE3233D77BE0098CE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CF19BE5233D77C90098CE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CF19BE8233D77C90098CE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +60,8 @@
 			children = (
 				5CF19BDC233D77BE0098CE8D /* AppDelegate.swift */,
 				5CF19BDE233D77BE0098CE8D /* SceneDelegate.swift */,
-				5CF19BE0233D77BE0098CE8D /* ViewController.swift */,
+				5C50C172235FA632002F2194 /* GraphQLTableViewController.swift */,
+				5C50C174235FA670002F2194 /* ContactTableViewCell.swift */,
 				5CF19BE2233D77BE0098CE8D /* Main.storyboard */,
 				5CF19BE5233D77C90098CE8D /* Assets.xcassets */,
 				5CF19BE7233D77C90098CE8D /* LaunchScreen.storyboard */,
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CF19BE1233D77BE0098CE8D /* ViewController.swift in Sources */,
+				5C50C175235FA670002F2194 /* ContactTableViewCell.swift in Sources */,
 				5CF19BDD233D77BE0098CE8D /* AppDelegate.swift in Sources */,
+				5C50C173235FA632002F2194 /* GraphQLTableViewController.swift in Sources */,
 				5CF19BDF233D77BE0098CE8D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
