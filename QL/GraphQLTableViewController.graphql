@@ -1,5 +1,5 @@
 query LoadContacts {
-  contacts {
+  allContacts {
     ...ContactDetails
   }
 }
@@ -12,14 +12,14 @@ fragment ContactDetails on Contact {
     updatedAt
 }
 
-mutation EditName($id: GraphQLID!, $name: String!) {
-    editName(id: $id, name: $name) {
+mutation EditName($id: ID!, $name: String!) {
+    updateContact(id: $id, name: $name) {
         name
     }
 }
 
-mutation EditNumber($id: GraphQLID!, $number: Int!) {
-    editNumber(id: $id, number: $number) {
+mutation EditNumber($id: ID!, $number: Int!) {
+    updateContact(id: $id, number: $number) {
         number
     }
 }
