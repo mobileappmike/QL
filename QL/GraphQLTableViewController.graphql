@@ -1,0 +1,25 @@
+query LoadContacts {
+  contacts {
+    ...ContactDetails
+  }
+}
+
+fragment ContactDetails on Contact {
+    id
+    name
+    number
+    createdAt
+    updatedAt
+}
+
+mutation EditName($id: GraphQLID!, $name: String!) {
+    editName(id: $id, name: $name) {
+        name
+    }
+}
+
+mutation EditNumber($id: GraphQLID!, $number: Int!) {
+    editNumber(id: $id, number: $number) {
+        number
+    }
+}

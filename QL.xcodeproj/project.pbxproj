@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5C50C173235FA632002F2194 /* GraphQLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50C172235FA632002F2194 /* GraphQLTableViewController.swift */; };
 		5C50C175235FA670002F2194 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50C174235FA670002F2194 /* ContactTableViewCell.swift */; };
+		5C6907E52362735200844C5F /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 5C6907E42362735200844C5F /* Apollo */; };
+		5C6907E7236273F000844C5F /* GraphQLTableViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5C6907E6236273F000844C5F /* GraphQLTableViewController.graphql */; };
 		5CF19BDD233D77BE0098CE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF19BDC233D77BE0098CE8D /* AppDelegate.swift */; };
 		5CF19BDF233D77BE0098CE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF19BDE233D77BE0098CE8D /* SceneDelegate.swift */; };
 		5CF19BE4233D77BE0098CE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF19BE2233D77BE0098CE8D /* Main.storyboard */; };
@@ -19,6 +21,7 @@
 /* Begin PBXFileReference section */
 		5C50C172235FA632002F2194 /* GraphQLTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTableViewController.swift; sourceTree = "<group>"; };
 		5C50C174235FA670002F2194 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		5C6907E6236273F000844C5F /* GraphQLTableViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GraphQLTableViewController.graphql; sourceTree = "<group>"; };
 		5CF19BD9233D77BD0098CE8D /* QL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF19BDC233D77BE0098CE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CF19BDE233D77BE0098CE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6907E52362735200844C5F /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +64,7 @@
 			children = (
 				5CF19BDC233D77BE0098CE8D /* AppDelegate.swift */,
 				5CF19BDE233D77BE0098CE8D /* SceneDelegate.swift */,
+				5C6907E6236273F000844C5F /* GraphQLTableViewController.graphql */,
 				5C50C172235FA632002F2194 /* GraphQLTableViewController.swift */,
 				5C50C174235FA670002F2194 /* ContactTableViewCell.swift */,
 				5CF19BE2233D77BE0098CE8D /* Main.storyboard */,
@@ -86,6 +91,9 @@
 			dependencies = (
 			);
 			name = QL;
+			packageProductDependencies = (
+				5C6907E42362735200844C5F /* Apollo */,
+			);
 			productName = QL;
 			productReference = 5CF19BD9233D77BD0098CE8D /* QL.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 5CF19BD0233D77BD0098CE8D;
+			packageReferences = (
+				5C6907E32362735200844C5F /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 5CF19BDA233D77BD0098CE8D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CF19BE9233D77C90098CE8D /* LaunchScreen.storyboard in Resources */,
+				5C6907E7236273F000844C5F /* GraphQLTableViewController.graphql in Resources */,
 				5CF19BE6233D77C90098CE8D /* Assets.xcassets in Resources */,
 				5CF19BE4233D77BE0098CE8D /* Main.storyboard in Resources */,
 			);
@@ -342,6 +354,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C6907E32362735200844C5F /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.18.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C6907E42362735200844C5F /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C6907E32362735200844C5F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CF19BD1233D77BD0098CE8D /* Project object */;
 }

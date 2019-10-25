@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Apollo
+
+let apollo = ApolloClient(url: URL(string: "https://api.graph.cool/simple/v1/ck11dkqm43wut01220n9pj9yh")!)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
