@@ -24,11 +24,11 @@ class GraphQLTableViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         loadData()
     }
     
-    // MARK: - Data Manipulation
+    // MARK: - Load Data
     
     func loadData() {
         watcher = apollo.watch(query: LoadContactsQuery(), resultHandler: { result in
@@ -68,40 +68,74 @@ class GraphQLTableViewController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let alert = UIAlertController(title: "Edit Contact", message: nil, preferredStyle: .alert)
-//
-//        alert.addTextField { (textField) in
-//            textField.placeholder = "Contact Name"
-//        }
-//
-//        alert.addTextField { (textField) in
-//            textField.placeholder = "Contact Number"
-//        }
-//
-//        let updateAction = UIAlertAction(title: "Update", style: .default) { (action) in
-//            let nameTextField = alert.textFields![0] as UITextField
-//            let numberTextField = alert.textFields![1] as UITextField
-//
-//            if nameTextField.text != name {
-//                //call update name mutation
-//            }
-//            if numberTextField.text != number {
-//                //call update number mutation
-//            }
-//
-//            alert.dismiss(animated: true, completion: nil)
-//
-//        }
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//        }
-//
-//        alert.addAction(updateAction)
-//        alert.addAction(cancelAction)
-//
-//        present(alert, animated: true)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let contact = contacts?[indexPath.row].fragments.contactDetails else {
+            fatalError("Couldn't find contact at row \(indexPath.row)")
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath) as? ContactTableViewCell
+        
+        guard let name = contact.name else {
+            fatalError("Unable to get name")
+        }
+        guard let number = contact.number else {
+            fatalError("Unable to get number")
+        }
+        
+        let alert = UIAlertController(title: "Edit Contact", message: nil, preferredStyle: .alert)
+
+        alert.addTextField { (textField) in
+            textField.text = name
+        }
+
+        alert.addTextField { (textField) in
+            textField.text = "\(number)"
+        }
+
+        let updateAction = UIAlertAction(title: "Update", style: .default) { (action) in
+            let nameTextField = alert.textFields![0] as UITextField
+            let numberTextField = alert.textFields![1] as UITextField
+
+            // MARK: Update Name & Number Methods
+            if nameTextField.text != contact.name {
+                guard let newName = nameTextField.text else {fatalError("Unable to get name text field text")}
+                apollo.perform(mutation: EditNameMutation(id: contact.id, name: newName)) { result in
+                    switch result {
+                    case .success(let resultData):
+                        cell?.updatedLabel.text = resultData.data?.updateContact?.updatedAt
+                        cell?.nameLabel.text = resultData.data?.updateContact?.name
+                    case .failure(let error):
+                        fatalError("Edit Name mutation didn't work. \(error.localizedDescription)")
+                    }
+                }
+            }
+            if numberTextField.text != "\(number)" {
+                guard let newNumber = Int(numberTextField.text!) else {fatalError("Unable to get number text field text")}
+                apollo.perform(mutation: EditNumberMutation(id: contact.id, number: newNumber)) { result in
+                    switch result {
+                    case .success(let resultData):
+                        cell?.updatedLabel.text = resultData.data?.updateContact?.updatedAt
+                        cell?.numberLabel.text = "\(resultData.data?.updateContact?.number ?? 00000)"
+                    case .failure(let error):
+                        fatalError("Edit number mutation didn't work. \(error.localizedDescription)")
+                    }
+                }
+            }
+            
+            self.loadData()
+
+            alert.dismiss(animated: true, completion: nil)
+
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+
+        alert.addAction(updateAction)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
+    }
 
 }

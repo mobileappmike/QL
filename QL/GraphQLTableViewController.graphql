@@ -15,11 +15,13 @@ fragment ContactDetails on Contact {
 mutation EditName($id: ID!, $name: String!) {
     updateContact(id: $id, name: $name) {
         name
+        updatedAt
     }
 }
 
 mutation EditNumber($id: ID!, $number: Int!) {
     updateContact(id: $id, number: $number) {
         number
+        updatedAt
     }
 }

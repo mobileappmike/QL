@@ -112,6 +112,7 @@ public final class EditNameMutation: GraphQLMutation {
       updateContact(id: $id, name: $name) {
         __typename
         name
+        updatedAt
       }
     }
     """
@@ -162,6 +163,7 @@ public final class EditNameMutation: GraphQLMutation {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -170,8 +172,8 @@ public final class EditNameMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(name: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Contact", "name": name])
+      public init(name: String? = nil, updatedAt: String) {
+        self.init(unsafeResultMap: ["__typename": "Contact", "name": name, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -191,6 +193,15 @@ public final class EditNameMutation: GraphQLMutation {
           resultMap.updateValue(newValue, forKey: "name")
         }
       }
+
+      public var updatedAt: String {
+        get {
+          return resultMap["updatedAt"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
     }
   }
 }
@@ -203,6 +214,7 @@ public final class EditNumberMutation: GraphQLMutation {
       updateContact(id: $id, number: $number) {
         __typename
         number
+        updatedAt
       }
     }
     """
@@ -253,6 +265,7 @@ public final class EditNumberMutation: GraphQLMutation {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("number", type: .scalar(Int.self)),
+        GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -261,8 +274,8 @@ public final class EditNumberMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(number: Int? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Contact", "number": number])
+      public init(number: Int? = nil, updatedAt: String) {
+        self.init(unsafeResultMap: ["__typename": "Contact", "number": number, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -280,6 +293,15 @@ public final class EditNumberMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "number")
+        }
+      }
+
+      public var updatedAt: String {
+        get {
+          return resultMap["updatedAt"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "updatedAt")
         }
       }
     }
