@@ -7,35 +7,63 @@
 //
 
 import UIKit
+import Apollo
 
 class GraphQLTableViewController: UITableViewController {
+    
+    var contacts: [LoadContactsQuery.Data.AllContact]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var watcher: GraphQLQueryWatcher<LoadContactsQuery>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+    }
+    
+    // MARK: - Data Manipulation
+    
+    func loadData() {
+        watcher = apollo.watch(query: LoadContactsQuery(), resultHandler: { result in
+            switch result {
+            case .success(let newResult):
+                self.contacts = newResult.data?.allContacts
+            case .failure(let error):
+                print("Error loading contacts: \(error.localizedDescription)")
+            }
+        })
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return contacts?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 60
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as? ContactTableViewCell else {
+            fatalError("Couldn't dequeue contactCell")
+        }
 
-        // Configure the cell...
+        guard let contact = contacts?[indexPath.row].fragments.contactDetails else {
+            fatalError("Couldn't find contact at row \(indexPath.row)")
+        }
+        
+        cell.nameLabel.text = contact.name
+        cell.numberLabel.text = "\(contact.number ?? 00000)"
+        cell.createdLabel.text = "Created: \(contact.createdAt)"
+        cell.updatedLabel.text = "Updated: \(contact.updatedAt)"
 
         return cell
     }
