@@ -97,7 +97,7 @@ class GraphQLTableViewController: UITableViewController {
             let numberTextField = alert.textFields![1] as UITextField
 
             // MARK: Update Name & Number Methods
-            if nameTextField.text != contact.name {
+            if nameTextField.text != name {
                 guard let newName = nameTextField.text else {fatalError("Unable to get name text field text")}
                 apollo.perform(mutation: EditNameMutation(id: contact.id, name: newName)) { result in
                     switch result {
@@ -121,8 +121,6 @@ class GraphQLTableViewController: UITableViewController {
                     }
                 }
             }
-            
-            self.loadData()
 
             alert.dismiss(animated: true, completion: nil)
 
