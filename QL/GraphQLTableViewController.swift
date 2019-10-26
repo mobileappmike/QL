@@ -18,11 +18,6 @@ class GraphQLTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
@@ -44,11 +39,11 @@ class GraphQLTableViewController: UITableViewController {
 //        let alert = UIAlertController(title: "Edit Contact", message: nil, preferredStyle: .alert)
 //
 //        alert.addTextField { (textField) in
-//            textField.placeholder = "Contact Name"
+//            textField.text = "Contact Name"
 //        }
 //
 //        alert.addTextField { (textField) in
-//            textField.placeholder = "Contact Number"
+//            textField.text = "Contact Number"
 //        }
 //
 //        let updateAction = UIAlertAction(title: "Update", style: .default) { (action) in
